@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: control-plane-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: control-plane-operator
+  template:
+    metadata:
+      labels:
+        name: control-plane-operator
+    spec:
+      containers:
+        - name: control-plane-operator
+          image: winternis/control-plane-operator:v0.0.1
+          command:
+          - control-plane-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace

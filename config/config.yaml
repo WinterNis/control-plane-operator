@@ -1,0 +1,3 @@
+apiVersion: control-plane.com/v1alpha1
+kind: ControlPlane
+projectName: control-plane-operator
